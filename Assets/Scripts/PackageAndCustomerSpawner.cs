@@ -44,8 +44,6 @@ public class PackageAndCustomerSpawner : MonoBehaviour
         {
             int randomNum = Random.Range(0, spawnLocations.Length);
             tempSpawnPos = spawnLocations[randomNum];
-            Debug.Log("Temp: " + tempSpawnPos);
-            Debug.Log("Current:" + currentSpawnPos);
         } while (tempSpawnPos.transform.position == currentSpawnPos.transform.position);
 
             spawnPos = tempSpawnPos;
