@@ -30,9 +30,9 @@ public class PackageAndCustomerSpawner : MonoBehaviour
 
     void Update()
     {
-        SetTarget();
         SpawnPackageAndCustomer(packagePrefabs, currentPackageSpawnPos, packageSpawnLocations, true);
         SpawnPackageAndCustomer(customerPrefabs, currentCustomerSpawnPos, customerSpawnLocations, false);
+        SetTarget();
     }
 
     GameObject DetermineSpawnLocation(GameObject currentSpawnPos, GameObject[] spawnLocations)
@@ -100,6 +100,9 @@ public class PackageAndCustomerSpawner : MonoBehaviour
     void SetTarget()
     {
         bool hasPackage = checkHoldingPackage.GetHasPackage();
+
+        Debug.Log("The current package spawn point is " + currentPackageSpawnPos);
+        Debug.Log("The current customer spawn point is " + currentCustomerSpawnPos);
 
         if (!hasPackage)
         {
