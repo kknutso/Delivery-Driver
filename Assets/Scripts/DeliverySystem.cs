@@ -13,8 +13,8 @@ public class DeliverySystem : MonoBehaviour
     [SerializeField] Color32 hasPackageColor = new Color32(1, 1, 1, 1);
     [SerializeField] Color32 noPackageColor = new Color32(1, 1, 1, 1);
 
-    [SerializeField] int packageLimit = 10;
-    int packagesDelivered;
+    [SerializeField] int packagesToBeDelivered;
+    [SerializeField] Image[] packages;
 
     [SerializeField] Canvas winLabel;
     [SerializeField] Canvas loseLabel;
@@ -37,14 +37,29 @@ public class DeliverySystem : MonoBehaviour
     void Update()
     {
         timerImage.fillAmount = timer.GetFillFraction();
+        DisplayPackages();
         LoseLevel();       
+    }
+
+    void DisplayPackages()
+    {
+        for (int i = 0; i < packages.Length; i++)
+        {
+            if(i < packagesToBeDelivered)
+            {
+                packages[i].enabled = true;
+            }
+            else
+            {
+                packages[i].enabled = false;
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Package" && !hasPackage)
         {
-            Debug.Log("You picked up a package!");
             Destroy(collision.gameObject, destroyDelay);
             spriteRenderer.color = hasPackageColor;
             hasPackage = true;
@@ -52,20 +67,19 @@ public class DeliverySystem : MonoBehaviour
 
         if (collision.tag == "Customer" && hasPackage)
         {
-            Debug.Log("You delivered the package.");
             Destroy(collision.gameObject, destroyDelay);
             spriteRenderer.color = noPackageColor;
             hasPackage = false;
             spawner.SetHasCustomerSpawned();
             spawner.SetHasPackageSpawned();
-            packagesDelivered++;
+            packagesToBeDelivered--;
             WinLevel();
         }
     }
 
     void WinLevel()
     {
-        if(packagesDelivered >= packageLimit)
+        if(packagesToBeDelivered <= 0)
         {
             player.StopPlayerMovement();
             timer.CancelTimer();

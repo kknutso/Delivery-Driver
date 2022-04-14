@@ -99,8 +99,9 @@ public class PackageAndCustomerSpawner : MonoBehaviour
     {
         bool hasPackage = checkHoldingPackage.GetHasPackage();
 
-        Debug.Log("The current package spawn point is " + currentPackageSpawnPos);
-        Debug.Log("The current customer spawn point is " + currentCustomerSpawnPos);
+        //Debug.Log("The current package spawn point is " + currentPackageSpawnPos);
+        //Debug.Log("The current customer spawn point is " + currentCustomerSpawnPos);
+
 
         if (!hasPackage)
         {

@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
             return;
 
         //Limit so we cannot go faster than 50% of max speed in reverse direction
-        if(velocityVsUp < -maxSpeed * 0.5f && accelerationInput < 0)
+        if(velocityVsUp < -maxSpeed * 0.4f && accelerationInput < 0)
             return;
 
         //Limit so we cannot go faster in any direction while accelerating
@@ -82,6 +82,11 @@ public class PlayerController : MonoBehaviour
         Vector2 rightVelocity = transform.right * Vector2.Dot(rb2d.velocity, transform.right);
 
         rb2d.velocity = forwardVelocity + rightVelocity * driftFactor;
+    }
+
+    public float GetVelocityMagnitude()
+    {
+        return rb2d.velocity.magnitude;
     }
 
     public void SetInputVector(Vector2 inputVector)
