@@ -295,7 +295,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5291754283748168158, guid: 8f0fca9c4b22430419d66ba62276bb62, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 7db1e5b73b610524696efc5c3ed5773e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b67a99331d0750d4390b7757451e55a8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -428,9 +428,9 @@ GameObject:
   - component: {fileID: 2722672607127960854}
   - component: {fileID: 2722672607127960855}
   - component: {fileID: 1874454083}
-  - component: {fileID: 2722672607127960857}
   - component: {fileID: 2722672607127960856}
   - component: {fileID: 2722672607127960850}
+  - component: {fileID: 114988105806269803}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -568,40 +568,6 @@ MonoBehaviour:
   carHitAudioSource: {fileID: 8438311275598480959}
   packagePickUpAudioSource: {fileID: 828675133}
   packageDeliverAudioSource: {fileID: 1825194422}
---- !u!114 &2722672607127960857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2722672607127960851}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9963a4b67fd221e4fbc8201661eab857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyDelay: 0.5
-  hasPackageColor:
-    serializedVersion: 2
-    rgba: 4279159835
-  noPackageColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  packagesToBeDelivered: 3
-  packages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  winLabel: {fileID: 0}
-  loseLabel: {fileID: 0}
-  timerImage: {fileID: 0}
 --- !u!114 &2722672607127960856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +597,25 @@ MonoBehaviour:
   turnFactor: 1.75
   minSpeedBeforeAllowTurn: 5
   maxSpeed: 15
+--- !u!114 &114988105806269803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2722672607127960851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4403ed1c57f6a24428f3a75e17534a62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasPackageColor:
+    serializedVersion: 2
+    rgba: 4278319631
+  noPackageColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  destroyDelay: 0.5
 --- !u!1 &2722672607474914377
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +784,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7565655855547034377, guid: 8f0fca9c4b22430419d66ba62276bb62, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3d3de9ab7f791bd4baf06b336c617df2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4e0f18c41e4ac474c86cb2d09711b0d3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 0.5

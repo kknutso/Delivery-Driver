@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PackageAndCustomerSpawner : MonoBehaviour
 {
-    DeliverySystem checkHoldingPackage;
+    PackageHandler checkHoldingPackage;
     TargetIndicator target;
 
     bool hasPackageSpawned;
@@ -22,7 +22,7 @@ public class PackageAndCustomerSpawner : MonoBehaviour
 
     void Start()
     {
-        checkHoldingPackage = FindObjectOfType<DeliverySystem>();
+        checkHoldingPackage = FindObjectOfType<PackageHandler>();
         target = FindObjectOfType<TargetIndicator>();
         currentPackageSpawnPos = packageSpawnLocations[0];
         currentCustomerSpawnPos = customerSpawnLocations[0];
@@ -98,10 +98,6 @@ public class PackageAndCustomerSpawner : MonoBehaviour
     void SetTarget()
     {
         bool hasPackage = checkHoldingPackage.GetHasPackage();
-
-        //Debug.Log("The current package spawn point is " + currentPackageSpawnPos);
-        //Debug.Log("The current customer spawn point is " + currentCustomerSpawnPos);
-
 
         if (!hasPackage)
         {

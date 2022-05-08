@@ -17,7 +17,7 @@ public class CarSpawner : MonoBehaviour
 
     void Update()
     {
-        randomTimeInSeconds = Random.Range(3, 5);
+        randomTimeInSeconds = Random.Range(3, 8);
     }
 
     IEnumerator SpawnCarsWithDelay()

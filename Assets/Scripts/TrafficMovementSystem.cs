@@ -15,7 +15,7 @@ public class TrafficMovementSystem : MonoBehaviour
         carSpawner = GetComponentInParent<CarSpawner>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         MoveCar();
     }

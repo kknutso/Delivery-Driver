@@ -18,12 +18,14 @@ public class LevelLoader : MonoBehaviour
 
     public void NextLevel()
     {
+        Time.timeScale = 1;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 
     public void ReloadLevel()
     {
+        Time.timeScale = 1;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
     }

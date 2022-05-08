@@ -7,6 +7,10 @@ public class HideDialogueBox : MonoBehaviour
     [SerializeField] GameObject storyDialogue;
     [SerializeField] GameObject endDialogue;
 
+    void Awake()
+    {
+        Time.timeScale = 0;
+    }
     public void HideStoryDialogue()
     {
         storyDialogue.SetActive(false);
@@ -15,6 +19,7 @@ public class HideDialogueBox : MonoBehaviour
 
     public void HideEndDialogue()
     {
+        Time.timeScale = 1;
         endDialogue.SetActive(false);
     }
 }

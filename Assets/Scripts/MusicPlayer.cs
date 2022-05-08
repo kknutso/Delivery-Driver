@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MusicPlayer : MonoBehaviour
 {
-    //static MusicPlayer instance;
-
     void Awake()
     {
         ManageSingleton();

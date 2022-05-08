@@ -13,12 +13,12 @@ public class CarSFXHandler : MonoBehaviour
     float desiredEnginePitch = 0.5f;
 
     PlayerController playerController;
-    DeliverySystem deliverySystem;
+    PackageHandler packageHandler;
 
     void Awake()
     {
         playerController = GetComponentInParent<PlayerController>();
-        deliverySystem = GetComponentInParent<DeliverySystem>();
+        packageHandler = GetComponentInParent<PackageHandler>();
     }
 
     void Update()
@@ -36,6 +36,11 @@ public class CarSFXHandler : MonoBehaviour
 
         //But keep a minimum level so it plays even if the car is idle
         desiredEngineVolume = Mathf.Clamp(desiredEngineVolume, 0.2f, 1.0f);
+
+        if(Time.timeScale == 0)
+        {
+            engineAudioSource.volume = 0;
+        }
 
         engineAudioSource.volume = Mathf.Lerp(engineAudioSource.volume, desiredEngineVolume, Time.deltaTime * 10);
 
@@ -61,8 +66,7 @@ public class CarSFXHandler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        bool hasPackage = deliverySystem.GetHasPackage();
-            Debug.Log(hasPackage);
+        bool hasPackage = packageHandler.GetHasPackage();
 
         if (collision.tag == "Package")
         {

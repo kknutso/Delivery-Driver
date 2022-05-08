@@ -5,22 +5,11 @@ using UnityEngine.UI;
 
 public class DeliverySystem : MonoBehaviour
 {
-    PackageAndCustomerSpawner spawner;
-    bool hasPackage;
-
-    [SerializeField] float destroyDelay = 0.5f;
-
-    [SerializeField] Color32 hasPackageColor = new Color32(1, 1, 1, 1);
-    [SerializeField] Color32 noPackageColor = new Color32(1, 1, 1, 1);
-
     [SerializeField] int packagesToBeDelivered;
     [SerializeField] Image[] packages;
 
     [SerializeField] Canvas winLabel;
     [SerializeField] Canvas loseLabel;
-
-    SpriteRenderer spriteRenderer;
-    PlayerInputHandler player;
 
     [Header("Timer")]
     [SerializeField] Image timerImage;
@@ -28,9 +17,6 @@ public class DeliverySystem : MonoBehaviour
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        player = GetComponent<PlayerInputHandler>();
-        spawner = FindObjectOfType<PackageAndCustomerSpawner>();
         timer = FindObjectOfType<Timer>();
     }
 
@@ -39,6 +25,11 @@ public class DeliverySystem : MonoBehaviour
         timerImage.fillAmount = timer.GetFillFraction();
         DisplayPackages();
         LoseLevel();       
+    }
+
+    public void SetPackagesDelivered(int value)
+    {
+        packagesToBeDelivered = packagesToBeDelivered - value;
     }
 
     void DisplayPackages()
@@ -56,32 +47,11 @@ public class DeliverySystem : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Package" && !hasPackage)
-        {
-            Destroy(collision.gameObject, destroyDelay);
-            spriteRenderer.color = hasPackageColor;
-            hasPackage = true;
-        }
-
-        if (collision.tag == "Customer" && hasPackage)
-        {
-            Destroy(collision.gameObject, destroyDelay);
-            spriteRenderer.color = noPackageColor;
-            hasPackage = false;
-            spawner.SetHasCustomerSpawned();
-            spawner.SetHasPackageSpawned();
-            packagesToBeDelivered--;
-            WinLevel();
-        }
-    }
-
-    void WinLevel()
+    public void WinLevel()
     {
         if(packagesToBeDelivered <= 0)
         {
-            player.StopPlayerMovement();
+            Time.timeScale = 0;
             timer.CancelTimer();
             winLabel.gameObject.SetActive(true);
         }
@@ -95,14 +65,9 @@ public class DeliverySystem : MonoBehaviour
         {
             if (winLabel.gameObject.activeSelf == false)
             {
-                player.StopPlayerMovement();
+                Time.timeScale = 0;
                 loseLabel.gameObject.SetActive(true);
             }
         }
-    }
-
-    public bool GetHasPackage()
-    {
-        return hasPackage;
     }
 }
